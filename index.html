@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="style.css">
+    <title>Interactive Web Page</title>
+  </head>
+
+  <body onload="generateMultiplicationTable(maxValue = 12);">
+
+    <header>
+      <h1>
+        Motivity Interactive Web Page
+        <button type="button" id="toggle" onclick="toggleInteractivity();">&#9658;</button>
+      </h1>
+      <h5 id="playButtonInstruction">Press play to interact</h5>
+    </header>
+
+    <main>
+      <section>
+        <fieldset disabled=true>
+          <h5>
+            Provide text and a term to search for within that text. Click the search button
+            to determine if the search term exists within the text and the index(es) where it
+            exists. Required fields are followed by <abbr title="Required data">*</abbr>.
+          </h5>
+
+          <button onclick="searchText();">Search</button>
+
+          <p>
+            <label for="searchableText">Searchable text: </label>
+            <textarea id="searchableText" rows="1" oninput="resizeTextarea(this)"></textarea>
+            <label for="searchableText"><abbr title="Required data">*</abbr></label>            
+          </p>
+
+          <p>
+            <label for="searchTerm">Search term: </label>
+            <textarea id="searchTerm" rows="1" oninput="resizeTextarea(this)"></textarea>
+            <label for="searchTerm"><abbr title="Required data">*</abbr></label>
+          </p>
+
+          <p>
+            <label for="searchOccurrence">Search term occurrences: </label>
+            <textarea id="searchOccurrence" rows="1" readonly></textarea>
+          </p>
+        </fieldset>
+      </section>
+
+      <section>
+        <fieldset disabled=true>
+          <h5>
+            Click +/- buttons to increment and decrement below counters. Specify foo limit to
+            provide the max value foo counter can contain. Increment foo counter to specified
+            max and see what happens to the bar counter!
+          </h5>
+
+          <button type="button" id="increment" onclick="incrementCounter(1);">&plus;</button>
+          <button type="button" id="decrement" onclick="incrementCounter(-1);">&minus;</button>
+
+          <p>
+            <label for="fooLimit">Foo counter limit:</label>
+            <input id="fooLimit" placeholder="Unlimited" 
+              type="text" oninput="parseFooLimit(); updateSelectedCounter();">
+          </p>
+
+          <p>
+            <label for="fooCounter">Foo counter: </label>
+            <input class="selectedCounter" id="fooCounter" type="text" value="0" readonly>
+          </p>
+
+          <p>
+            <label for="barCounter">Bar counter: </label>
+            <input class="unselectedCounter" id="barCounter" type="text" value="0" readonly>
+          </p>
+        </fieldset>
+      </section>
+
+      <div id="multiplicationTable">
+        <h2>Multiplcation Table</h2>
+      </div>
+    </main>
+
+    <script src="script.js" async></script>
+  </body>
+</html>
